@@ -2,13 +2,10 @@ using GenericDeepEquality;
 using System;
 using Xunit;
 
-namespace Tests
-{
-    public class GenericDeepEqualityTest
-    {
+namespace Tests {
+    public class GenericDeepEqualityTest {
         [Fact]
-        public void EqualsBoolTrue()
-        {
+        public void EqualsBoolTrue() {
             bool x = true;
             bool y = true;
             var comparer = new GenericDeepEqualityComparer();
@@ -17,8 +14,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsBoolFalse()
-        {
+        public void EqualsBoolFalse() {
             bool x = true;
             bool y = false;
             var comparer = new GenericDeepEqualityComparer();
@@ -27,8 +23,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsByteTrue()
-        {
+        public void EqualsByteTrue() {
             byte x = 3;
             byte y = 3;
             var comparer = new GenericDeepEqualityComparer();
@@ -37,8 +32,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsByteFalse()
-        {
+        public void EqualsByteFalse() {
             byte x = 3;
             byte y = 4;
             var comparer = new GenericDeepEqualityComparer();
@@ -47,8 +41,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsSByteTrue()
-        {
+        public void EqualsSByteTrue() {
             sbyte x = 3;
             sbyte y = 3;
             var comparer = new GenericDeepEqualityComparer();
@@ -57,8 +50,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsSByteFalse()
-        {
+        public void EqualsSByteFalse() {
             sbyte x = 3;
             sbyte y = 4;
             var comparer = new GenericDeepEqualityComparer();
@@ -67,8 +59,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsCharTrue()
-        {
+        public void EqualsCharTrue() {
             char x = 'a';
             char y = 'a';
             var comparer = new GenericDeepEqualityComparer();
@@ -77,8 +68,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsCharFalse()
-        {
+        public void EqualsCharFalse() {
             char x = 'a';
             char y = 'A';
             var comparer = new GenericDeepEqualityComparer();
@@ -87,8 +77,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsDecimalTrue()
-        {
+        public void EqualsDecimalTrue() {
             decimal x = 3.4m;
             decimal y = 3.4m;
             var comparer = new GenericDeepEqualityComparer();
@@ -97,8 +86,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsDecimalFalse()
-        {
+        public void EqualsDecimalFalse() {
             decimal x = 3.4m;
             decimal y = 4.9m;
             var comparer = new GenericDeepEqualityComparer();
@@ -107,8 +95,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsDoubleTrue()
-        {
+        public void EqualsDoubleTrue() {
             double x = 3.2;
             double y = 3.2;
             var comparer = new GenericDeepEqualityComparer();
@@ -117,8 +104,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsDoubleFalse()
-        {
+        public void EqualsDoubleFalse() {
             double x = 3.2;
             double y = 4.7;
             var comparer = new GenericDeepEqualityComparer();
@@ -127,8 +113,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsFloatTrue()
-        {
+        public void EqualsFloatTrue() {
             float x = 3.2f;
             float y = 3.2f;
             var comparer = new GenericDeepEqualityComparer();
@@ -137,8 +122,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsFloatFalse()
-        {
+        public void EqualsFloatFalse() {
             float x = 3.2f;
             float y = 4.7f;
             var comparer = new GenericDeepEqualityComparer();
@@ -147,8 +131,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsIntTrue()
-        {
+        public void EqualsIntTrue() {
             int x = 3;
             int y = 3;
             var comparer = new GenericDeepEqualityComparer();
@@ -157,8 +140,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsIntFalse()
-        {
+        public void EqualsIntFalse() {
             int x = 3;
             int y = 4;
             var comparer = new GenericDeepEqualityComparer();
@@ -167,8 +149,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsUIntTrue()
-        {
+        public void EqualsUIntTrue() {
             uint x = 3;
             uint y = 3;
             var comparer = new GenericDeepEqualityComparer();
@@ -177,8 +158,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsUIntFalse()
-        {
+        public void EqualsUIntFalse() {
             uint x = 3;
             uint y = 4;
             var comparer = new GenericDeepEqualityComparer();
@@ -187,8 +167,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsLongTrue()
-        {
+        public void EqualsLongTrue() {
             long x = 3;
             long y = 3;
             var comparer = new GenericDeepEqualityComparer();
@@ -197,8 +176,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsLongFalse()
-        {
+        public void EqualsLongFalse() {
             long x = 3;
             long y = 4;
             var comparer = new GenericDeepEqualityComparer();
@@ -207,8 +185,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsULongTrue()
-        {
+        public void EqualsULongTrue() {
             ulong x = 3;
             ulong y = 3;
             var comparer = new GenericDeepEqualityComparer();
@@ -217,8 +194,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsULongFalse()
-        {
+        public void EqualsULongFalse() {
             ulong x = 3;
             ulong y = 4;
             var comparer = new GenericDeepEqualityComparer();
@@ -227,8 +203,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsShortTrue()
-        {
+        public void EqualsShortTrue() {
             short x = 3;
             short y = 3;
             var comparer = new GenericDeepEqualityComparer();
@@ -237,8 +212,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsShortFalse()
-        {
+        public void EqualsShortFalse() {
             short x = 3;
             short y = 4;
             var comparer = new GenericDeepEqualityComparer();
@@ -247,8 +221,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsUShortTrue()
-        {
+        public void EqualsUShortTrue() {
             ushort x = 3;
             ushort y = 3;
             var comparer = new GenericDeepEqualityComparer();
@@ -257,8 +230,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsUShortFalse()
-        {
+        public void EqualsUShortFalse() {
             ushort x = 3;
             ushort y = 4;
             var comparer = new GenericDeepEqualityComparer();
@@ -267,8 +239,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsStringTrue()
-        {
+        public void EqualsStringTrue() {
             string x = "Right String";
             string y = "Right String";
             var comparer = new GenericDeepEqualityComparer();
@@ -277,8 +248,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsStringFalse()
-        {
+        public void EqualsStringFalse() {
             string x = "Right String";
             string y = "Wrong String";
             var comparer = new GenericDeepEqualityComparer();
@@ -286,85 +256,83 @@ namespace Tests
             Assert.False(comparer.Equals(x, y));
         }
 
-        private struct TestStruct
-        {
+        private struct TestStruct {
             public int iNumber;
             public string sWord;
         }
 
         [Fact]
-        public void EqualsStructTrue()
-        {
-            TestStruct x = new TestStruct
-            {
-                iNumber = 3,
-                sWord = "Struct Test"
-            };
-            TestStruct y = new TestStruct
-            {
-                iNumber = 3,
-                sWord = "Struct Test"
-            };
+        public void EqualsStructTrue() {
+            TestStruct x = new TestStruct { iNumber = 3, sWord = "Struct Test" };
+            TestStruct y = new TestStruct { iNumber = 3, sWord = "Struct Test" };
             var comparer = new GenericDeepEqualityComparer();
 
             Assert.True(comparer.Equals(x, y));
         }
 
         [Fact]
-        public void EqualsStructFalse()
-        {
-            TestStruct x = new TestStruct
-            {
-                iNumber = 3,
-                sWord = "Struct Test"
-            };
-            TestStruct y = new TestStruct
-            {
-                iNumber = 3,
-                sWord = "Wrong Struct Test"
-            };
+        public void EqualsStructFalse() {
+            TestStruct x = new TestStruct { iNumber = 3, sWord = "Struct Test" };
+            TestStruct y = new TestStruct { iNumber = 3, sWord = "Wrong Struct Test" };
             var comparer = new GenericDeepEqualityComparer();
 
             Assert.False(comparer.Equals(x, y));
         }
 
-        private class TestClass
-        {
+        private class TestClass {
             public int iNumber;
             public string sWord;
         }
 
         [Fact]
-        public void EqualsClassTrue()
-        {
-            TestClass x = new TestClass
-            {
-                iNumber = 3,
-                sWord = "Class Test"
-            };
-            TestClass y = new TestClass
-            {
-                iNumber = 3,
-                sWord = "Class Test"
-            };
+        public void EqualsClassTrue() {
+            TestClass x = new TestClass { iNumber = 3, sWord = "Class Test" };
+            TestClass y = new TestClass { iNumber = 3, sWord = "Class Test" };
             var comparer = new GenericDeepEqualityComparer();
 
             Assert.True(comparer.Equals(x, y));
         }
 
         [Fact]
-        public void EqualsClassFalse()
-        {
-            TestClass x = new TestClass
-            {
-                iNumber = 3,
-                sWord = "Class Test"
-            };
-            TestClass y = new TestClass
-            {
-                iNumber = 3,
-                sWord = "Wrong Class Test"
-            };
+        public void EqualsClassFalse() {
+            TestClass x = new TestClass { iNumber = 3, sWord = "Class Test" };
+            TestClass y = new TestClass { iNumber = 3, sWord = "Wrong Class Test" };
+            var comparer = new GenericDeepEqualityComparer();
+
+            Assert.False(comparer.Equals(x, y));
+        }
+
+        [Fact]
+        public void EqualsDataTimeTrue() {
+            DateTime x = DateTime.Parse("12/7/2019");
+            DateTime y = DateTime.Parse("12/7/2019");
+            var comparer = new GenericDeepEqualityComparer();
+
+            Assert.True(comparer.Equals(x, y));
+        }
+
+        [Fact]
+        public void EqualsDataTimeFalse() {
+            DateTime x = DateTime.Parse("12/7/2019");
+            DateTime y = DateTime.Parse("12/7/2029");
+            var comparer = new GenericDeepEqualityComparer();
+
+            Assert.False(comparer.Equals(x, y));
+        }
+
+        [Fact]
+        public void EqualsGuidTrue() {
+            Guid x = Guid.NewGuid();
+            Guid y = new Guid(x.ToByteArray());
+            var comparer = new GenericDeepEqualityComparer();
+
+            Assert.True(comparer.Equals(x, y));
+        }
+
+        [Fact]
+        public void EqualsGuidFalse() {
+            Guid x = Guid.NewGuid();
+            Guid y = Guid.NewGuid();
             var comparer = new GenericDeepEqualityComparer();
 
             Assert.False(comparer.Equals(x, y));
