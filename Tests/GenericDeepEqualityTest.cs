@@ -295,16 +295,8 @@ namespace Tests
         [Fact]
         public void EqualsStructTrue()
         {
-            TestStruct x = new TestStruct
-            {
-                iNumber = 3,
-                sWord = "Struct Test"
-            };
-            TestStruct y = new TestStruct
-            {
-                iNumber = 3,
-                sWord = "Struct Test"
-            };
+            TestStruct x = new TestStruct {iNumber = 3, sWord = "Struct Test"};
+            TestStruct y = new TestStruct {iNumber = 3, sWord = "Struct Test"};
             var comparer = new GenericDeepEqualityComparer();
 
             Assert.True(comparer.Equals(x, y));
@@ -313,16 +305,8 @@ namespace Tests
         [Fact]
         public void EqualsStructFalse()
         {
-            TestStruct x = new TestStruct
-            {
-                iNumber = 3,
-                sWord = "Struct Test"
-            };
-            TestStruct y = new TestStruct
-            {
-                iNumber = 3,
-                sWord = "Wrong Struct Test"
-            };
+            TestStruct x = new TestStruct {iNumber = 3, sWord = "Struct Test"};
+            TestStruct y = new TestStruct {iNumber = 3, sWord = "Wrong Struct Test"};
             var comparer = new GenericDeepEqualityComparer();
 
             Assert.False(comparer.Equals(x, y));
@@ -337,16 +321,8 @@ namespace Tests
         [Fact]
         public void EqualsClassTrue()
         {
-            TestClass x = new TestClass
-            {
-                iNumber = 3,
-                sWord = "Class Test"
-            };
-            TestClass y = new TestClass
-            {
-                iNumber = 3,
-                sWord = "Class Test"
-            };
+            TestClass x = new TestClass {iNumber = 3, sWord = "Class Test"};
+            TestClass y = new TestClass {iNumber = 3, sWord = "Class Test"};
             var comparer = new GenericDeepEqualityComparer();
 
             Assert.True(comparer.Equals(x, y));
@@ -355,16 +331,48 @@ namespace Tests
         [Fact]
         public void EqualsClassFalse()
         {
-            TestClass x = new TestClass
-            {
-                iNumber = 3,
-                sWord = "Class Test"
-            };
-            TestClass y = new TestClass
-            {
-                iNumber = 3,
-                sWord = "Wrong Class Test"
-            };
+            TestClass x = new TestClass {iNumber = 3, sWord = "Class Test"};
+            TestClass y = new TestClass {iNumber = 3, sWord = "Wrong Class Test"};
+            var comparer = new GenericDeepEqualityComparer();
+
+            Assert.False(comparer.Equals(x, y));
+        }
+
+        [Fact]
+        public void EqualsDataTimeTrue()
+        {
+            DateTime x = DateTime.Parse("12/7/2019");
+            DateTime y = DateTime.Parse("12/7/2019");
+            var comparer = new GenericDeepEqualityComparer();
+
+            Assert.True(comparer.Equals(x, y));
+        }
+
+        [Fact]
+        public void EqualsDataTimeFalse()
+        {
+            DateTime x = DateTime.Parse("12/7/2019");
+            DateTime y = DateTime.Parse("12/7/2029");
+            var comparer = new GenericDeepEqualityComparer();
+
+            Assert.False(comparer.Equals(x, y));
+        }
+
+        [Fact]
+        public void EqualsGuidTrue()
+        {
+            Guid x = Guid.NewGuid();
+            Guid y = new Guid(x.ToByteArray());
+            var comparer = new GenericDeepEqualityComparer();
+
+            Assert.True(comparer.Equals(x, y));
+        }
+
+        [Fact]
+        public void EqualsGuidFalse()
+        {
+            Guid x = Guid.NewGuid();
+            Guid y = Guid.NewGuid();
             var comparer = new GenericDeepEqualityComparer();
 
             Assert.False(comparer.Equals(x, y));

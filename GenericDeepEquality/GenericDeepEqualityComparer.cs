@@ -65,6 +65,9 @@ namespace GenericDeepEquality
                     case string xString:
                         var yString = (string)y;
                         return xString.Equals(yString);
+                    case Guid xGuid:
+                        var yGuid = (Guid)y;
+                        return xGuid.Equals(yGuid);
                     default:
                         return GenericComparision(x, y);
                 }
@@ -124,6 +127,9 @@ namespace GenericDeepEquality
                 foreach (var propertyInfo in x.GetType().GetProperties())
                 {
                     var xValue = propertyInfo.GetValue(x, null);
+                    if (x.GetType() == xValue?.GetType()) {
+                        continue;
+                    }
                     var yValue = propertyInfo.GetValue(y, null);
                     if (Equals(xValue, yValue))
                         continue;
@@ -136,6 +142,9 @@ namespace GenericDeepEquality
                     foreach (var fieldInfo in x.GetType().GetFields())
                     {
                         var xValue = fieldInfo.GetValue(x);
+                        if (x.GetType() == xValue?.GetType()) {
+                            continue;
+                        }
                         var yValue = fieldInfo.GetValue(y);
                         if (Equals(xValue, yValue))
                             continue;
