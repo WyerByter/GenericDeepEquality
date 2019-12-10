@@ -2,95 +2,70 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GenericDeepEquality
-{
-    public class GenericDeepEqualityComparer : IEqualityComparer<object>
-    {
-        public new bool Equals(object x, object y)
-        {
-            if (x == null || y == null)
-            {
+namespace GenericDeepEquality {
+    public class GenericDeepEqualityComparer : IEqualityComparer<object> {
+        public new bool Equals(object x, object y) {
+            if (x == null || y == null) {
                 return x == null && y == null;
-            }
-            else if (x.GetType() != y.GetType())
-            {
+            } else if (x.GetType() != y.GetType()) {
                 return false;
-            }
-            else
-            {
-                switch (x)
-                {
+            } else {
+                switch (x) {
                     case IEnumerable<object> xEnumerable:
                         var yEnumerable = (IEnumerable<object>)y;
                         return EnumerableComparison(xEnumerable, yEnumerable);
-                    case bool xBool:
-                        var yBool = (bool)y;
-                        return xBool == yBool;
-                    case byte xByte:
-                        var yByte = (byte)y;
-                        return xByte == yByte;
-                    case sbyte xSByte:
-                        var ySByte = (sbyte)y;
-                        return xSByte == ySByte;
-                    case char xChar:
-                        var yChar = (char)y;
-                        return xChar == yChar;
-                    case decimal xDecimal:
-                        var yDecimal = (decimal)y;
-                        return xDecimal == yDecimal;
-                    case double xDouble:
-                        var yDouble = (double)y;
-                        return xDouble == yDouble;
-                    case float xFloat:
-                        var yFloat = (float)y;
-                        return xFloat == yFloat;
-                    case int xInt:
-                        var yInt = (int)y;
-                        return xInt == yInt;
-                    case uint xUInt:
-                        var yUInt = (uint)y;
-                        return xUInt == yUInt;
-                    case long xLong:
-                        var yLong = (long)y;
-                        return xLong == yLong;
-                    case ulong xULong:
-                        var yULong = (ulong)y;
-                        return xULong == yULong;
-                    case short xShort:
-                        var yShort = (short)y;
-                        return xShort == yShort;
-                    case ushort xUShort:
-                        var yUShort = (ushort)y;
-                        return xUShort == yUShort;
-                    case string xString:
-                        var yString = (string)y;
-                        return xString.Equals(yString);
-                    case Guid xGuid:
-                        var yGuid = (Guid)y;
-                        return xGuid.Equals(yGuid);
+                    case bool xValue:
+                        return ValueEqual(xValue, (bool)y);
+                    case byte xValue:
+                        return ValueEqual(xValue, (byte)y);
+                    case sbyte xValue:
+                        return ValueEqual(xValue, (sbyte)y);
+                    case char xValue:
+                        return ValueEqual(xValue, (char)y);
+                    case decimal xValue:
+                        return ValueEqual(xValue, (decimal)y);
+                    case double xValue:
+                        return ValueEqual(xValue, (double)y);
+                    case float xValue:
+                        return ValueEqual(xValue, (float)y);
+                    case int xValue:
+                        return ValueEqual(xValue, (int)y);
+                    case uint xValue:
+                        return ValueEqual(xValue, (uint)y);
+                    case long xValue:
+                        return ValueEqual(xValue, (long)y);
+                    case ulong xValue:
+                        return ValueEqual(xValue, (ulong)y);
+                    case short xValue:
+                        return ValueEqual(xValue, (short)y);
+                    case ushort xValue:
+                        return ValueEqual(xValue, (ushort)y);
+                    case string xValue:
+                        return ValueEqual(xValue, (string)y);
+                    case Guid xValue:
+                        return ValueEqual(xValue, (Guid)y);
                     default:
                         return GenericComparision(x, y);
                 }
             }
         }
 
-        public int GetHashCode(object obj)
-        {
+        public int GetHashCode(object obj) {
             return obj.GetHashCode();
+        }
+
+        private static bool ValueEqual<T>(T x, T y) {
+            return x.Equals(y);
         }
 
         private bool EnumerableComparison(
             IEnumerable<object> x,
-            IEnumerable<object> y)
-        {
+            IEnumerable<object> y) {
             var equal = false;
 
-            if (x == null || y == null)
-            {
+            if (x == null || y == null) {
                 equal = x == null && y == null;
-            }
-            else
-            {
+            } else {
                 var xList = x.ToList();
                 var yList = y.ToList();
 
@@ -106,30 +81,26 @@ namespace GenericDeepEquality
                             yItem)));
 
                 equal = xList.Count == yList.Count
-                    && (xList.Count == 0
-                        || !(xNotInY || yNotInX));
+                        && (xList.Count == 0
+                            || !(xNotInY || yNotInX));
             }
 
             return equal;
         }
 
-        private bool GenericComparision(object x, object y)
-        {
+        private bool GenericComparision(object x, object y) {
             var equal = true;
 
-            if (x == null || y == null)
-            {
+            if (x == null || y == null) {
                 equal = x == null && y == null;
-            }
-            else
-            {
+            } else {
 
-                foreach (var propertyInfo in x.GetType().GetProperties())
-                {
+                foreach (var propertyInfo in x.GetType().GetProperties()) {
                     var xValue = propertyInfo.GetValue(x, null);
                     if (x.GetType() == xValue?.GetType()) {
                         continue;
                     }
+
                     var yValue = propertyInfo.GetValue(y, null);
                     if (Equals(xValue, yValue))
                         continue;
@@ -137,14 +108,13 @@ namespace GenericDeepEquality
                     break;
                 }
 
-                if (equal)
-                {
-                    foreach (var fieldInfo in x.GetType().GetFields())
-                    {
+                if (equal) {
+                    foreach (var fieldInfo in x.GetType().GetFields()) {
                         var xValue = fieldInfo.GetValue(x);
                         if (x.GetType() == xValue?.GetType()) {
                             continue;
                         }
+
                         var yValue = fieldInfo.GetValue(y);
                         if (Equals(xValue, yValue))
                             continue;
