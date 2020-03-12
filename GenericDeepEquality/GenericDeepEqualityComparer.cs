@@ -20,54 +20,12 @@ namespace GenericDeepEquality
             {
                 switch (x)
                 {
+                    case IComparable xComparable:
+                        var yComparable = (IComparable)y;
+                        return xComparable.Equals(yComparable);
                     case IEnumerable<object> xEnumerable:
                         var yEnumerable = (IEnumerable<object>)y;
                         return EnumerableComparison(xEnumerable, yEnumerable);
-                    case bool xBool:
-                        var yBool = (bool)y;
-                        return xBool == yBool;
-                    case byte xByte:
-                        var yByte = (byte)y;
-                        return xByte == yByte;
-                    case sbyte xSByte:
-                        var ySByte = (sbyte)y;
-                        return xSByte == ySByte;
-                    case char xChar:
-                        var yChar = (char)y;
-                        return xChar == yChar;
-                    case decimal xDecimal:
-                        var yDecimal = (decimal)y;
-                        return xDecimal == yDecimal;
-                    case double xDouble:
-                        var yDouble = (double)y;
-                        return xDouble == yDouble;
-                    case float xFloat:
-                        var yFloat = (float)y;
-                        return xFloat == yFloat;
-                    case int xInt:
-                        var yInt = (int)y;
-                        return xInt == yInt;
-                    case uint xUInt:
-                        var yUInt = (uint)y;
-                        return xUInt == yUInt;
-                    case long xLong:
-                        var yLong = (long)y;
-                        return xLong == yLong;
-                    case ulong xULong:
-                        var yULong = (ulong)y;
-                        return xULong == yULong;
-                    case short xShort:
-                        var yShort = (short)y;
-                        return xShort == yShort;
-                    case ushort xUShort:
-                        var yUShort = (ushort)y;
-                        return xUShort == yUShort;
-                    case string xString:
-                        var yString = (string)y;
-                        return xString.Equals(yString);
-                    case Guid xGuid:
-                        var yGuid = (Guid)y;
-                        return xGuid.Equals(yGuid);
                     default:
                         return GenericComparision(x, y);
                 }
