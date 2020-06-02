@@ -22,7 +22,7 @@ namespace GenericDeepEquality
                 {
                     case IComparable xComparable:
                         var yComparable = (IComparable)y;
-                        return xComparable.Equals(yComparable);
+                        return xComparable.CompareTo(yComparable)  == 0;
                     case IEnumerable<object> xEnumerable:
                         var yEnumerable = (IEnumerable<object>)y;
                         return EnumerableComparison(xEnumerable, yEnumerable);
