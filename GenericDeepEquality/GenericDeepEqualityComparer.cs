@@ -18,17 +18,23 @@ namespace GenericDeepEquality
             }
             else
             {
-                switch (x)
-                {
-                    case IComparable xComparable:
-                        var yComparable = (IComparable)y;
-                        return xComparable.CompareTo(yComparable)  == 0;
-                    case IEnumerable<object> xEnumerable:
-                        var yEnumerable = (IEnumerable<object>)y;
-                        return EnumerableComparison(xEnumerable, yEnumerable);
-                    default:
-                        return GenericComparision(x, y);
-                }
+                var xEquatableType = x.GetType().GetInterfaces()
+                    .Where(xInter => xInter.IsGenericType)
+                    .Where(xInter => xInter.GetGenericTypeDefinition() 
+                        == typeof(IEquatable<>));
+
+                if (xEquatableType.Count() > 0 ) {
+                    return x.Equals(y);
+                } else {  
+                    switch (x) {
+                        case IEnumerable<object> xEnumerable:
+                            var yEnumerable = (IEnumerable<object>)y;
+                            return EnumerableComparison(xEnumerable, yEnumerable);
+                        default:
+                            return GenericComparision(x, y);
+                    }
+
+                }            
             }
         }
 
