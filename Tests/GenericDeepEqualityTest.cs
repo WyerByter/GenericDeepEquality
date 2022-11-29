@@ -339,7 +339,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsDataTimeTrue()
+        public void EqualsDateTimeTrue()
         {
             DateTime x = DateTime.Parse("12/7/2019");
             DateTime y = DateTime.Parse("12/7/2019");
@@ -349,7 +349,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EqualsDataTimeFalse()
+        public void EqualsDateTimeFalse()
         {
             DateTime x = DateTime.Parse("12/7/2019");
             DateTime y = DateTime.Parse("12/7/2029");
