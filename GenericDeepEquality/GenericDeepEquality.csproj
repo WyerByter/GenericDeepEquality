@@ -6,17 +6,22 @@
     <Company>StepAppDevelopment</Company>
     <Copyright>Copyright 2019 by WyerByter</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/WyerByter/GenericDeepEquality</PackageProjectUrl>
     <RepositoryUrl>https://github.com/WyerByter/GenericDeepEquality</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>IEqualityComparer Comparer Generic GenericEquality DeepEquality Generics</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <Version>1.0.1</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
